@@ -18,14 +18,14 @@ type StockRepoImp struct {
 	Db *sql.DB
 }
 
-func (s *StockRepoImp) NewStockRepoImp(db *sql.DB) StockRepo {
+func NewStockRepoImp(db *sql.DB) StockRepo {
 	return &StockRepoImp{
 		Db: db,
 	}
 }
 
 func (s *StockRepoImp) AddStock(stock *models.Stocks) error {
-	query := `INSERT INTO stocks (id, name, quantity, unit, price, createon, updateon)
+	query := `INSERT INTO stock (id, name, qty, unit, price, createon, updateon)
 	          VALUES ($1, $2, $3, $4, $5, $6, $7)`
 
 	now := time.Now()
@@ -45,7 +45,7 @@ func (s *StockRepoImp) AddStock(stock *models.Stocks) error {
 	return err
 }
 func (s *StockRepoImp) GetStocks() ([]*models.Stocks, error) {
-	query := `SELECT id, name, quantity, unit, price, createon, updateon FROM stocks`
+	query := `SELECT id, name, qty, unit, price, createon, updateon FROM stock`
 	rows, err := s.Db.Query(query)
 	if err != nil {
 		return nil, err
@@ -72,7 +72,7 @@ func (s *StockRepoImp) GetStocks() ([]*models.Stocks, error) {
 	return stocks, nil
 }
 func (s *StockRepoImp) GetStocksByName(name string) (*models.Stocks, error) {
-	query := `SELECT id, name, quantity, unit, price, createon, updateon FROM stocks WHERE name = $1 LIMIT 1`
+	query := `SELECT id, name, qty, unit, price, createon, updateon FROM stock WHERE name = $1 LIMIT 1`
 	row := s.Db.QueryRow(query, name)
 
 	stock := &models.Stocks{}
@@ -94,7 +94,7 @@ func (s *StockRepoImp) GetStocksByName(name string) (*models.Stocks, error) {
 	return stock, nil
 }
 func (s *StockRepoImp) UpdateStock(stock *models.Stocks) error {
-	query := `UPDATE stocks SET name = $1, quantity = $2, unit = $3, price = $4, updateon = $5 WHERE id = $6`
+	query := `UPDATE stock SET name = $1, qty = $2, unit = $3, price = $4, updateon = $5 WHERE id = $6`
 
 	stock.UpdateOn = time.Now()
 

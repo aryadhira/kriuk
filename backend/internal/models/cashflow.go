@@ -18,7 +18,3 @@ type CashFlow struct {
 	CreateOn time.Time    `json:"createon"`
 	UpdateOn time.Time    `json:"updateon"`
 }
-
-func (c *CashFlow) TableName() string {
-	return "cashflow"
-}

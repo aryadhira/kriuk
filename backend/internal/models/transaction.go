@@ -16,7 +16,3 @@ type Transaction struct {
 	CreateOn     time.Time     `json:"createon"`
 	UpdateOn     time.Time     `json:"updateon"`
 }
-
-func (t *Transaction) TableName() string {
-	return "transaction"
-}

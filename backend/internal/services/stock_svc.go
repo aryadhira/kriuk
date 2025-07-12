@@ -7,6 +7,8 @@ import (
 	"kriuk/internal/repository"
 	"kriuk/utils"
 	"net/http"
+
+	"github.com/google/uuid"
 )
 
 type StockSvc struct {
@@ -74,6 +76,7 @@ func (s *StockSvc) UpdateStock(w http.ResponseWriter, r *http.Request) {
 	if isUpdate {
 		err = s.db.UpdateStock(stocks)
 	} else {
+		stocks.ID = uuid.NewString()
 		err = s.db.AddStock(stocks)
 	}
 

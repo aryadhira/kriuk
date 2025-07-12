@@ -18,7 +18,7 @@ type TransactionRepoImp struct {
 	Db *sql.DB
 }
 
-func (t *TransactionRepoImp) NewTransactionRepoImp(db *sql.DB) TransactionRepo {
+func NewTransactionRepoImp(db *sql.DB) TransactionRepo {
 	return &TransactionRepoImp{
 		Db: db,
 	}

@@ -19,7 +19,7 @@ type CashFlowRepoImp struct {
 	Db *sql.DB
 }
 
-func (s *CashFlowRepoImp) NewCashFlowRepoImp(db *sql.DB) CashFlowRepo {
+func NewCashFlowRepoImp(db *sql.DB) CashFlowRepo {
 	return &CashFlowRepoImp{
 		Db: db,
 	}

@@ -7,6 +7,8 @@ import (
 	"kriuk/internal/repository"
 	"kriuk/utils"
 	"net/http"
+
+	"github.com/google/uuid"
 )
 
 type EmployeeSvc struct {
@@ -33,6 +35,7 @@ func (s *EmployeeSvc) AddEmployee(w http.ResponseWriter, r *http.Request) {
 		utils.WriteJSON(w, http.StatusInternalServerError, err.Error(), nil)
 	}
 
+	employee.ID = uuid.NewString()
 	err = s.db.AddEmployee(&employee)
 	if err != nil {
 		utils.WriteJSON(w, http.StatusInternalServerError, err.Error(), nil)

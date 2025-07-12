@@ -15,7 +15,7 @@ type EmployeeRepoImp struct {
 	Db *sql.DB
 }
 
-func (s *StockRepoImp) NewEmployeeRepoImp(db *sql.DB) EmployeeRepo {
+func NewEmployeeRepoImp(db *sql.DB) EmployeeRepo {
 	return &EmployeeRepoImp{
 		Db: db,
 	}

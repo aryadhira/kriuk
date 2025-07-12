@@ -14,4 +14,5 @@ var Migrations = []MigrationScript{
 	{Version: 3, Migrate: CreateEmployeeTable},
 	{Version: 4, Migrate: CreateCashFlowTable},
 	{Version: 5, Migrate: CreateTransactionTable},
+	{Version: 6, Migrate: CreateOutstandingTable},
 }

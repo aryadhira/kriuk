@@ -26,7 +26,7 @@ func (s *CashflowSvc) GetCashflow(w http.ResponseWriter, r *http.Request) {
 
 	datas := []*models.CashFlow{}
 	if filterDate != "" {
-		dt, err := time.Parse("YYYYMMDD", filterDate)
+		dt, err := time.Parse("20060102", filterDate)
 		if err != nil {
 			utils.WriteJSON(w, http.StatusBadRequest, err.Error(), nil)
 		}
@@ -72,7 +72,7 @@ func (s *CashflowSvc) UpdateCashflow(w http.ResponseWriter, r *http.Request) {
 
 	cashflow := new(models.CashFlow)
 	cashflow.ID = utils.InterfaceToString(payload["id"])
-	dt, err := time.Parse("YYYYMMDD", utils.InterfaceToString("date"))
+	dt, err := time.Parse("20060102", utils.InterfaceToString("date"))
 	if err != nil {
 		utils.WriteJSON(w, http.StatusBadRequest, err.Error(), nil)
 	}
