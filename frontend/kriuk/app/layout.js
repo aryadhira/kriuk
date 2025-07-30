@@ -3,6 +3,7 @@ import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/ui/app-sidebar";
 import PageContainer from "@/components/ui/page-container";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
           <main>
             <SidebarTrigger />
             <PageContainer>
+              <Toaster/>
               {children}
             </PageContainer>
           </main>

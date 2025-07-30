@@ -70,8 +70,8 @@ func (s *StockSvc) UpdateStock(w http.ResponseWriter, r *http.Request) {
 	stocks.ID = utils.InterfaceToString(payload["id"])
 	stocks.Name = utils.InterfaceToString(payload["name"])
 	stocks.Unit = utils.InterfaceToString(payload["unit"])
-	stocks.Quantity = utils.InterfaceToInt(payload["qty"])
-	stocks.Price = utils.InterfaceToFloat(payload["qty"])
+	stocks.Quantity = int(utils.InterfaceToFloat(payload["qty"]))
+	stocks.Price = utils.InterfaceToFloat(payload["price"])
 
 	if isUpdate {
 		err = s.db.UpdateStock(stocks)

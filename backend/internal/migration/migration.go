@@ -83,10 +83,11 @@ func (m *DBMigration) applyMigrations(currentVersion int) error {
 				return fmt.Errorf("failed to update db_version: %w", err)
 			}
 			log.Println("Migration applied successfully")
-		} else {
-			log.Println("DB Version up to date")
-		}
+		} 
+		
 	}
+
+	log.Println("DB Version up to date")
 
 	return nil
 }
